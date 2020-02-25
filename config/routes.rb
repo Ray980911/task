@@ -16,4 +16,8 @@ Rails.application.routes.draw do
     get "sign_out", :to => "users/sessions#destroy"
   end
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 end

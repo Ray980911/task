@@ -20,6 +20,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        NoticeMailer.sendmail_task(@task).deliver #追記
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else

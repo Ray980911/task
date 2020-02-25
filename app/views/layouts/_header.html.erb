@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset=“UTF-8”>
@@ -14,10 +14,10 @@
         <ul class="navbar-nav mr-auto">
             <li><%= link_to "マイタスク", "#" %></li>
             <li><%= link_to "タスク一覧", tasks_path %></li>
-            <li><%= link_to "ユーザ設定", "#" %></li>
+            <li><%= link_to "ユーザ設定", edit_user_registration_path %></li>
         </ul>
         <small class="navbar-nav">
-          <%= link_to "ようこそhogehogeさん", "#" %>
+          <%= link_to "ようこそ#{current_user.name}さん", "user/#{current_user.id}" %>
         </small>
       </div>
     </header>
