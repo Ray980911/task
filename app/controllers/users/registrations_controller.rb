@@ -9,7 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def show
-    binding.pry
+    @user = User.find(params[:id])
   end
 
   # def new

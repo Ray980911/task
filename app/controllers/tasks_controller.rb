@@ -15,12 +15,21 @@ class TasksController < ApplicationController
   def edit
   end
 
+  def mytask
+    @tasks = Task.where user_id: params[:id]
+  end
+
+  def assign
+    @task = Task.find(params[:id])
+    @users = User.all
+  end
+
   def create
     @task = Task.new(task_params)
-
+    @task.user = current_user
+    # binding.pry
     respond_to do |format|
       if @task.save
-        NoticeMailer.sendmail_task(@task).deliver #追記
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render :show, status: :created, location: @task }
       else
@@ -31,8 +40,10 @@ class TasksController < ApplicationController
   end
 
   def update
+    binding.pry
     respond_to do |format|
       if @task.update(task_params)
+        binding.pry
         format.html { redirect_to @task, notice: 'Task was successfully updated.' }
         format.json { render :show, status: :ok, location: @task }
       else
@@ -56,6 +67,6 @@ class TasksController < ApplicationController
     end
 
     def task_params
-      params.require(:task).permit(:title, :content)
+      params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
     end
 end

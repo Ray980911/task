@@ -26,6 +26,9 @@ gem 'jquery-rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'sass-rails'
+gem "kaminari"
+gem 'enum_help'
+gem 'bootstrap_form'
 
 
 
@@ -42,6 +45,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'letter_opener_web', '~> 1.0'
+  gem "bullet"
 end
 
 group :test do

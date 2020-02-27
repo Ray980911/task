@@ -12,12 +12,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li><%= link_to "マイタスク", "#" %></li>
-            <li><%= link_to "タスク一覧", tasks_path %></li>
-            <li><%= link_to "ユーザ設定", edit_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "マイタスク", "/tasks/users/#{current_user.id}" %></li> 
+          <% else %>
+            <li><%= link_to "マイタスク", sign_in_path %></li>
+          <% end %>    
+          <li><%= link_to "タスク一覧", tasks_path %></li>
+          <li><%= link_to "ユーザ設定", edit_user_registration_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to "サインアウト", sign_out_path %></li>
+          <% else %>
+            <li><%= link_to "サインイン", sign_in_path %></li>
+          <% end %>
         </ul>
         <small class="navbar-nav">
-          <%= link_to "ようこそ#{current_user.name}さん", "user/#{current_user.id}" %>
+          <% if user_signed_in? %>
+            <%= link_to "ようこそ#{current_user.name}さん", "/users/#{current_user.id}" %>
+          <% else %>
+            <%= link_to "サインアップ", sign_up_path %>
+          <% end %>  
         </small>
       </div>
     </header>
