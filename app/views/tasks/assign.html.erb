@@ -1,0 +1,38 @@
+<h2>アサイン</h2>
+<div>
+  <p>現在アサインされているユーザー</p>
+  <p><%= @task.user.name %></p>
+</div>
+
+<div>
+  <p>新しくアサインするユーザー</p>
+  <%= form_with(model: @task, local: true) do |form| %>
+    <div class="field">
+      <%= form.collection_select :user_id, User.all, :id, :name %>
+    </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <p>
+    <strong>タイトル:</strong>
+    <%= @task.title %>
+  </p>
+  <p>
+    <strong>内容:</strong>
+    <%= @task.content %>
+  </p>
+  <p>
+    <strong>期限:</strong>
+    <%= @task.deadline %>
+  </p>
+  <p>
+    <strong>ステータス:</strong>
+    <%= @task.status %>
+  </p>
+</div>
+
+

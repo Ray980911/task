@@ -1,14 +1,33 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+<div>
+  <p>
+    <strong>タイトル:</strong>
+    <%= @task.title %>
+  </p>
+  
+  <p>
+    <strong>内容:</strong>
+    <%= @task.content %>
+  </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @task.content %>
-</p>
+  <p>
+    <strong>担当者:</strong>
+    <%= @task.user.name %>
+  </p>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+  <p>
+    <strong>期限:</strong>
+    <%= @task.deadline %>
+  </p>
+  
+  <p>
+    <strong>ステータス:</strong>
+    <%= @task.status %>
+  </p>
+</div>
+
+
+<%= link_to '戻る', tasks_path %> |
+<%= link_to '編集', edit_task_path(@task) %> |
+<%= link_to 'アサイン', "/tasks/#{params[:id]}/assign" %> 
