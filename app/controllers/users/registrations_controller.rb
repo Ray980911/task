@@ -4,12 +4,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
 
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   def show
     @user = User.find(params[:id])
+    @tasks = Task.index_all.where(user_id: params[:id]).page(params[:page])
   end
 
   # def new
@@ -17,7 +18,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # def create
-  #   super
+  #   @user = User.new(configure_sign_up_params)
+  #   if @user.save
+  #     redirect_to root_url, notice: "Please check your email to activate your account."
+  #   end
   # end
 
   # def edit
@@ -52,9 +56,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_sign_up_path_for(resource)
+    redirect_to root_url
+  end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
