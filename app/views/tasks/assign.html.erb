@@ -1,38 +1,40 @@
 <h2>アサイン</h2>
-<div>
-  <p>現在アサインされているユーザー</p>
-  <p><%= @task.user.name %></p>
-</div>
-
-<div>
+<div class="row">
+  <div class="col-xs-12 col-md-6">
+    <p>現在アサインされているユーザー</p>
+    <p><%= @task.user.name %></p>
+  </div>
+  <div class="col-xs-12 col-md-6">
   <p>新しくアサインするユーザー</p>
-  <%= form_with(model: @task, local: true) do |form| %>
-    <div class="field">
-      <%= form.collection_select :user_id, User.all, :id, :name %>
-    </div>
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+    <%= form_with(model: @task, local: true) do |form| %>
+      <div class="field">
+        <%= form.collection_select :user_id, User.all, :id, :name, {prompt: ""}, {class: "form-control"} %>
+      </div>
+  </div>    
+      <div class="actions">
+        <%= form.submit "アサイン", class: "btn btn-success" %>
+      </div>
+    <% end %>
 </div>
 
-<div>
-  <p>
-    <strong>タイトル:</strong>
-    <%= @task.title %>
-  </p>
-  <p>
-    <strong>内容:</strong>
-    <%= @task.content %>
-  </p>
-  <p>
-    <strong>期限:</strong>
-    <%= @task.deadline %>
-  </p>
-  <p>
-    <strong>ステータス:</strong>
-    <%= @task.status %>
-  </p>
+<div class="px-5 py-5 my-2 bg-light">
+  <div>
+    <h2><%= @task.title %></h2>
+      <p>
+        <strong>内容:</strong>
+        <%= @task.content %>
+      </p>
+      <p>
+        <strong>担当者:</strong>
+        <%= @task.user.name %>
+      </p>
+      <p>
+        <strong>期限:</strong>
+        <%= @task.deadline.strftime('%Y/%m/%d - %H:%M') %>
+      </p>
+      <p>
+        <strong>ステータス:</strong>
+        <%= @task.status %>
+      </p>
+  </div>
 </div>
-
-

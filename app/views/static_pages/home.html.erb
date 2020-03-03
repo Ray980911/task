@@ -1,2 +1,8 @@
-<h1>StaticPages#home</h1>
+<h1>Task Management App</h1>
 <p>Find me in app/views/static_pages/home.html.erb</p>
+
+<p id="notice"><%= notice %></p>
+
+<% unless user_signed_in? %>
+  <%= link_to "メール確認はこちら", "http://localhost:3000/letter_opener", target: :_blank %>
+<% end %>   

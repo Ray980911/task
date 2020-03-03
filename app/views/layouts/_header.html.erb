@@ -13,23 +13,23 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <% if user_signed_in? %>
-            <li><%= link_to "マイタスク", "/tasks/users/#{current_user.id}" %></li> 
+            <li><%= link_to "マイタスク", "/tasks/users/#{current_user.id}", class: "text-muted" %></li> 
           <% else %>
-            <li><%= link_to "マイタスク", sign_in_path %></li>
+            <li><%= link_to "マイタスク", sign_in_path, class: "text-muted" %></li>
           <% end %>    
-          <li><%= link_to "タスク一覧", tasks_path %></li>
-          <li><%= link_to "ユーザ設定", edit_user_registration_path %></li>
+          <li><%= link_to "タスク一覧", tasks_path, class: "text-muted" %></li>
+          <li><%= link_to "ユーザ設定", edit_user_registration_path, class: "text-muted" %></li>
           <% if user_signed_in? %>
-            <li><%= link_to "サインアウト", sign_out_path %></li>
+            <li><%= link_to "サインアウト", sign_out_path, class: "text-muted" %></li>
           <% else %>
-            <li><%= link_to "サインイン", sign_in_path %></li>
+            <li><%= link_to "サインイン", sign_in_path, class: "text-muted" %></li>
           <% end %>
         </ul>
         <small class="navbar-nav">
           <% if user_signed_in? %>
-            <%= link_to "ようこそ#{current_user.name}さん", "/users/#{current_user.id}" %>
+            <%= link_to "ようこそ#{current_user.name}さん", "/users/#{current_user.id}", class: "text-dark" %>
           <% else %>
-            <%= link_to "サインアップ", sign_up_path %>
+            <%= link_to "サインアップ", sign_up_path, class: "text-dark" %>
           <% end %>  
         </small>
       </div>
