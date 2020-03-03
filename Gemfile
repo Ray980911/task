@@ -5,7 +5,7 @@ ruby '2.5.3'
 
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 gem 'mysql2', '>= 0.4.4'
-gem 'puma', '~> 3.11'
+gem "puma", ">= 3.12.3"
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
