@@ -27,6 +27,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass'
 gem 'sass-rails'
 gem "kaminari"
+gem 'kaminari-bootstrap', '~> 3.0.1'
 gem 'enum_help'
 gem 'bootstrap_form'
 
