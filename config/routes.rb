@@ -5,12 +5,11 @@ Rails.application.routes.draw do
   get '/tasks/:id/assign', to: 'tasks#assign'
 
   resources :tasks
-# urlの変更（大まかに）
+  
   devise_for :users, :controllers => {
     :registrations => 'users/registrations',
     :sessions => 'users/sessions'
   }
-# urlの変更（詳細に）
   devise_scope :user do
     get "users/:id", :to => "users/registrations#show"
     get "sign_up", :to => "users/registrations#new"
