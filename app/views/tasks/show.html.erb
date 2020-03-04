@@ -2,22 +2,22 @@
 
 <div class="px-5 py-5 my-2 bg-light">
     <h2><%= @task.title %></h2>
-  <p>
+  <div>
     <strong>内容:</strong>
     <%= @task.content %>
-  </p>
-  <p>
-    <strong>担当者:</strong>
-    <%= @task.user.name %>
-  </p>
-  <p>
+  </div>
+  <div>
     <strong>期限:</strong>
     <%= @task.deadline.strftime('%Y/%m/%d - %H:%M') %>
-  </p>
-  <p>
+  </div>
+  <div>
+    <strong>担当者:</strong>
+      担当者：<%= @task.user.name %> <%= image_tag @task.user.icon.variant(resize: "30x30"), class: "rounded-circle" if @task.user.icon.attached?%>
+  </div>
+  <div>
     <strong>ステータス:</strong>
     <%= @task.status %>
-  </p>
+  </div>
   <%= link_to '戻る', tasks_path, class: 'btn btn-outline-dark' %>
   <% if current_user.id == @task.user_id %>
     <%= link_to '編集', edit_task_path(@task), class: 'btn btn-info' %>  
