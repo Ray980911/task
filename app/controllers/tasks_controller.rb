@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
   before_action :logged_in_user, only: [:create, :index]
 
   def index
@@ -21,7 +21,6 @@ class TasksController < ApplicationController
   end
 
   def assign
-    @task = Task.find(params[:id])
   end
 
   def create
