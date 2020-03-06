@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :logged_in_user, only: [:create, :index]
+  before_action :authenticate_user!
 
   def index
     @tasks = Task.index_all.page(params[:page])
@@ -64,12 +64,5 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
   end
-
-  def logged_in_user
-    unless user_signed_in?
-      redirect_to sign_in_path
-    end
-  end
-
 
 end
