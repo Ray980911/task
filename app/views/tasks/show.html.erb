@@ -7,19 +7,19 @@
 <div class="jumbotron">
     <h2><%= @task.title %></h2>
   <div>
-    <strong>内容:</strong>
+    <b>内容:</b>
     <%= @task.content %>
   </div>
   <div>
-    <strong>期限:</strong>
+    <b>期限:</b>
     <%= @task.deadline.strftime('%Y/%m/%d - %H:%M') %>
   </div>
   <div>
-    <strong>担当者:</strong>
+    <b>担当者:</b>
       担当者：<%= @task.user.name %> <%= image_tag @task.user.icon.variant(resize: "30x30"), class: "rounded-circle" if @task.user.icon.attached?%>
   </div>
   <div>
-    <strong>ステータス:</strong>
+    <b>ステータス:</b>
     <%= @task.status %>
   </div>
   <%= link_to '戻る', tasks_path, class: 'btn btn-outline-dark' %>

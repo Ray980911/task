@@ -13,22 +13,22 @@
   <% end %>
 
   <div class="form-group">
-    <strong><%= form.label :title %></strong>
+    <b><%= form.label :title %></b>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <strong><%= form.label :content %></strong>
+    <b><%= form.label :content %></b>
     <%= form.text_area :content, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <strong><%= form.label :deadline %></strong>
+    <b><%= form.label :deadline %></b>
     <p><%= form.datetime_select :deadline %> </p>
   </div>
 
   <div class="form-group">
-    <strong><%= form.label :status %></strong>
+    <b><%= form.label :status %></b>
     <%= form.radio_button :status, :未対応, value:0 %>
     <%= form.label :未対応 %>
     <%= form.radio_button :status, :対応中, value:1 %>
