@@ -1,4 +1,43 @@
 <h2>新規タスク</h1>
 
-<%= render 'form', task: @task %>
+<%= form_with(model: @task, local: true) do |form| %>
+  <% if @task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+      <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
+  <div class="form-group">
+    <b><%= form.label :title %></b>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <b><%= form.label :content %></b>
+    <%= form.text_area :content, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <b><%= form.label :deadline %></b>
+    <b><%= form.datetime_select :deadline %> </b>
+  </div>
+
+  <div class="form-group">
+    <b><%= form.label :status %></b>
+    <%= form.radio_button :status, :未対応, value:0 %>
+    <%= form.label :未対応 %>
+    <%= form.radio_button :status, :対応中, value:1 %>
+    <%= form.label :対応中 %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "登録する", class: "btn btn-lg, btn-success" %>
+  </div>
+
+
+<% end %>

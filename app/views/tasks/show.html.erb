@@ -1,23 +1,27 @@
-<p id="notice"><%= notice %></p>
+<% if notice%>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% else %>
+  <br>
+<% end %>
 
-<div class="px-5 py-5 my-2 bg-light">
+<div class="jumbotron">
     <h2><%= @task.title %></h2>
-  <p>
-    <strong>内容:</strong>
+  <div>
+    <b>内容:</b>
     <%= @task.content %>
-  </p>
-  <p>
-    <strong>担当者:</strong>
-    <%= @task.user.name %>
-  </p>
-  <p>
-    <strong>期限:</strong>
+  </div>
+  <div>
+    <b>期限:</b>
     <%= @task.deadline.strftime('%Y/%m/%d - %H:%M') %>
-  </p>
-  <p>
-    <strong>ステータス:</strong>
+  </div>
+  <div>
+    <b>担当者:</b>
+      担当者：<%= @task.user.name %> <%= image_tag @task.user.icon.variant(resize: "30x30"), class: "rounded-circle" if @task.user.icon.attached?%>
+  </div>
+  <div>
+    <b>ステータス:</b>
     <%= @task.status %>
-  </p>
+  </div>
   <%= link_to '戻る', tasks_path, class: 'btn btn-outline-dark' %>
   <% if current_user.id == @task.user_id %>
     <%= link_to '編集', edit_task_path(@task), class: 'btn btn-info' %>  
