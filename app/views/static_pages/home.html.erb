@@ -1,5 +1,8 @@
-<p id="notice"><%= notice %></p>
-
+<% if notice%>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% else %>
+  <br>
+<% end %>
 
 <div class="jumbotron">
   <h1>Task Management App</h1>

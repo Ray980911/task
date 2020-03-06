@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/tasks/users/:id', to: 'tasks#mytask'
   get '/tasks/:id/assign', to: 'tasks#assign'
-
   resources :tasks
   
   devise_for :users, :controllers => {

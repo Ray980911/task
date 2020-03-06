@@ -8,7 +8,7 @@ class Task < ApplicationRecord
   validates :status, presence: true
 
   scope :index_all, -> {
-    select(:id, :title, :content, :created_at, :deadline, :status, :user_id).order(created_at: :asc).includes(:user)
+    select(:id, :title, :content, :created_at, :deadline, :status, :user_id).order(deadline: :asc).includes(:user)
   }
 
 end

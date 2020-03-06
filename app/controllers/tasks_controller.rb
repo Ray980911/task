@@ -28,26 +28,20 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-    # binding.pry
-    respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        redirect_to @task, notice: 'Task was successfully created.' 
       else
-        format.html { render :new }
+        render :new 
       end
-    end
   end
 
   def update
     if @task.user_id == current_user.id 
-      respond_to do |format|
         if @task.update(task_params)
-          # binding.pry
-          format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+          redirect_to @task, notice: 'Task was successfully updated.'
         else
-          format.html { render :edit }
+          render :edit 
         end
-      end
     else
       redirect_to tasks_path
     end  
@@ -56,9 +50,7 @@ class TasksController < ApplicationController
   def destroy
     if @task.user_id == current_user.id
       @task.destroy
-      respond_to do |format|
-        format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
-      end
+      redirect_to tasks_url, notice: 'Task was successfully destroyed.' 
     else  
       redirect_to tasks_path  
     end
@@ -78,4 +70,6 @@ class TasksController < ApplicationController
         redirect_to sign_in_path
       end
     end
+
+
 end

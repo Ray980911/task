@@ -4,7 +4,7 @@
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
     <strong><%= f.label :icon %><br /></strong>
-    <p><%= image_tag @user.icon.variant(resize: "150x150") if @user.icon.attached? %></p>
+    <p><%= image_tag @user.icon.variant(resize: "150x150"), class: "rounded-circle" if @user.icon.attached? %></p>
     <p><%= f.file_field :icon%></p>
   </div>
 

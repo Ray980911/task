@@ -1,6 +1,10 @@
-<p id="notice"><%= notice %></p>
+<% if notice%>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% else %>
+  <br>
+<% end %>
 
-<div class="px-5 py-5 my-2 bg-light">
+<div class="jumbotron">
     <h2><%= @task.title %></h2>
   <div>
     <strong>内容:</strong>
