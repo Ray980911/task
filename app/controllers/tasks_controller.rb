@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
 
   def index
     @tasks = Task.index_all.page(params[:page])
@@ -21,7 +21,6 @@ class TasksController < ApplicationController
   end
 
   def assign
-    @task = Task.find(params[:id])
   end
 
   def create
