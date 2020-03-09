@@ -21,7 +21,6 @@ class TasksController < ApplicationController
   end
 
   def assign
-    @task = Task.find(params[:id])
   end
 
   def create
