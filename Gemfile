@@ -19,6 +19,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'dotenv-rails'
+
 # gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 
