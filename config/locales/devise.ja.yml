@@ -110,4 +110,4 @@ ja:
       short: "%y/%m/%d %H:%M"
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
-    pm: "午後"     
+    pm: "午後"
