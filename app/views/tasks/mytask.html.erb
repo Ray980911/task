@@ -1,0 +1,36 @@
+<h2>マイタスク</h2>
+
+<div id="new-blog-link">
+  <b><%= link_to 'New Task', new_task_path, class: 'btn btn-success' %></b>
+</div>
+
+<div class="row">
+  <% @tasks.each do |task| %>
+    <% unless task.status == "完了" %>
+      <div class="col-xs-12 col-md-6 blog-panel">
+      <% if task.deadline > Time.now %>
+        <div class="card border-success my-2">
+      <% else %>
+        <div class="card border-danger my-2">
+      <% end %>
+        <div class="card-header"><%= task.title %></div>
+        <div class="card-body">
+          <p><%= task.content %></p>
+          <p>期限：<%= task.deadline.strftime('%Y/%m/%d - %H:%M') %></p>
+          <p>担当者：<%= task.user.name %> <%= image_tag task.user.icon.variant(resize: "30x30"), class: "rounded-circle" if task.user.icon.attached?%></p>
+          <p>ステータス：<%= task.status %></p>
+          <div class="task-links">
+            <%= link_to '詳細', task, class: 'btn btn-light' %>
+            <%= link_to '編集', edit_task_path(task), class: 'btn btn-info' %>
+            <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
+        </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  <%= paginate @tasks %>
+</div>
+
+
+

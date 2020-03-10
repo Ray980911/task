@@ -1,0 +1,21 @@
+<% if notice%>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% else %>
+  <br>
+<% end %>
+
+<div class="jumbotron">
+  <h1>Task Management App</h1>
+  <p>Find me in app/views/static_pages/home.html.erb</p>
+
+  <% if user_signed_in? %>
+    <%= link_to "New Task", new_task_path, class: "btn btn-success" %>
+  <% else %>
+    <%= link_to "Sign_up", sign_up_path, class: "btn btn-primary" %>
+    <br><small><%= link_to "メール確認はこちら", "http://localhost:3000/letter_opener", target: :_blank %></small>
+  <% end %>
+
+</div>
+
+
+

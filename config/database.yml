@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+
+development:
+  <<: *default
+  database: rails_task_development
+
+test:
+  <<: *default
+  database: rails_task_test
+
+production:
+  <<: *default
+  database: rails_task_production
+  username: rails_task
+  password: <%= ENV['RAILS_TASK_DATABASE_PASSWORD'] %>

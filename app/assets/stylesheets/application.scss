@@ -1,0 +1,11 @@
+@import "bootstrap";
+@import "tasks";
+@import "layouts";
+
+.pagination>li>a {          
+  color: #696969;   /*文字の色を変える*/
+}
+
+.pagination>li>a.active {     
+  background-color: #93c9ff;
+}

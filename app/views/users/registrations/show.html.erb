@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-xs-12 col-md-2">
+    <p><%= image_tag @user.icon.variant(resize: "150x150"), class: "rounded-circle" if @user.icon.attached? %></p>
+  </div>
+
+  <div class="col-xs-12 col-md-10">
+    <br><h4>
+      <b>Name:</b>
+      <%= @user.name %>
+    </h4>
+    <br><h4>
+      <b>Email:</b>
+      <%= @user.email %>
+    </h4>
+  </div>
+</div>
+
+<div class="row">
+  <% @tasks.each do |task| %>
+    <div class="col-xs-12 col-md-12 task-panel">
+    <% if task.deadline > Time.now %>
+      <div class="card border-success mb-3">
+    <% else %>
+      <div class="card border-danger mb-3">
+    <% end %>  
+        <div class="card-header"><%= task.title %></div>
+        <div class="card-body">
+          <p><%= task.content %></p>
+          <p>期限：<%= task.deadline.strftime('%Y/%m/%d - %H:%M') %></p>
+          <p>担当者：<%= task.user.name %></p>
+          <p>ステータス：<%= task.status %></p>
+          <div class="task-links">
+            <%= link_to '詳細', task, class: 'btn btn-light' %> 
+            <% if current_user.id == task.user_id %>
+              <%= link_to '編集', edit_task_path(task), class: 'btn btn-info' %> 
+              <%= link_to '削除', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %> 
+            <% end %>  
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
