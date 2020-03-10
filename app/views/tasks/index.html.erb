@@ -15,7 +15,7 @@
       <% else %>
         <div class="card border-danger my-2">
       <% end %>
-        <div class="card-header"><%= task.title %></div>
+      <div class="card-header"><%= task.title %></div>
         <div class="card-body">
           <p><%= task.content %></p>
           <p>期限：<%= task.deadline.strftime('%Y/%m/%d - %H:%M') %></p>
@@ -31,7 +31,7 @@
         </div>
         </div>
       </div>
-    <% end %>  
+    <% end %>
   <% end %>
   <%= paginate @tasks %>
 </div>
