@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :edit, :update, :destroy, :assign]
+  before_action :correct_user, only: [:update, :destroy]
 
   def index
     @tasks = Task.index_all.page(params[:page])
@@ -63,4 +64,8 @@ class TasksController < ApplicationController
     params.require(:task).permit(:title, :content, :deadline, :status, :user_id)
   end
 
+  def correct_user
+    @task = current_user.tasks.find_by(id: params[:id])
+    redirect_to root_path if @task.nil?
+  end
 end
