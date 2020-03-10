@@ -10,8 +10,12 @@
   <% @tasks.each do |task| %>
     <% unless task.status == "完了" %>
       <div class="col-xs-12 col-md-6 task-panel">
-      <div class="card border-#{(task.deadline > Time.now) ? 'success' : 'danger'} mb-3">
-        <div class="card-header"><%= task.title %></div>
+      <% if task.deadline > Time.now %>
+        <div class="card border-success my-2">
+      <% else %>
+        <div class="card border-danger my-2">
+      <% end %>
+      <div class="card-header"><%= task.title %></div>
         <div class="card-body">
           <p><%= task.content %></p>
           <p>期限：<%= task.deadline.strftime('%Y/%m/%d - %H:%M') %></p>
@@ -25,9 +29,9 @@
             <% end %>
           </div>
         </div>
-        </div>
       </div>
-    <% end %>  
+      </div>
+    <% end %>
   <% end %>
   <%= paginate @tasks %>
 </div>
